@@ -1,0 +1,21 @@
+{
+	"name": "weboftalent/imageeditpartialcachebust",
+	"description": "Simplify partial caching queries for folders of DataObjects associated with Images by cache busting these DataObjects when the associated image is edited",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "templates", "partials", "caching"],
+	"authors": [
+		{
+			"name": "Gordon Anderson",
+			"email": "gordon.b.anderson@gmail.com",
+			"homepage": "https://github.com/gordonbanderson/weboftalent-imageeditpartialcachebust",
+			"role": "Developer"
+		}
+	],
+    "support": {
+        "issues": "https://github.com/gordonbanderson/weboftalent-imageeditpartialcachebust/issues"
+    },
+	"require":
+	{
+		"silverstripe/framework": "~3.1"
+	}
+}
