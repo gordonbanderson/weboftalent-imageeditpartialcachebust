@@ -1,0 +1,8 @@
+---
+Name: imageeditpartialcachebust
+After: 'framework/*','cms/*'
+---
+
+Image:
+  extensions:
+    - ImageEditPartialCacheBustExtension
