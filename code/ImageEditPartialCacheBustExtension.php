@@ -8,34 +8,39 @@ class ImageEditPartialCacheBustExtension extends DataExtension {
 	the  ID of the image being refocussed, the DataObject's LastEdited field is updated.
 	*/
 	public function onAfterWrite() {
-		error_log('IMAGE CACHE BUSTER');
 		$config = Config::inst();
 		$sitetreeclasses = $config->get('ImageEditCacheBust', 'SiteTree');
 		$dataobjectclasses = $config->get('ImageEditCacheBust', 'DataObject');
 		$stages = $config->get('ImageEditCacheBust', 'Stages');
 
-		// deal with SiteTree first
-		foreach ($sitetreeclasses as $clazz => $idfield) {
-			$instanceofclass = Injector::inst()->create($clazz);
-			$objectsWithImage = $instanceofclass::get()->filter($idfield, $this->owner->ID);
-			foreach ($objectsWithImage as $objectWithImage) {
-				foreach ($stages as $stage) {
-					$suffix = '_'.$stage;
-					$suffix = str_replace('_Stage', '', $suffix);
-					$sql = "UPDATE `SiteTree{$suffix}` SET LastEdited=NOW() where ID=".$objectWithImage->ID;
-					DB::query($sql);
+		if ($sitetreeclasses) {
+			// deal with SiteTree first
+			foreach ($sitetreeclasses as $clazz => $idfield) {
+				$instanceofclass = Injector::inst()->create($clazz);
+				$objectsWithImage = $instanceofclass::get()->filter($idfield, $this->owner->ID);
+				foreach ($objectsWithImage as $objectWithImage) {
+					foreach ($stages as $stage) {
+						$suffix = '_'.$stage;
+						$suffix = str_replace('_Stage', '', $suffix);
+						$sql = "UPDATE `SiteTree{$suffix}` SET LastEdited=NOW() where ID=".$objectWithImage->ID;
+						DB::query($sql);
+					}
 				}
 			}
 		}
 
-		// deal with SiteTree first
-		foreach ($dataobjectclasses as $clazz => $idfield) {
-			$instanceofclass = Injector::inst()->create($clazz);
-			$objectsWithImage = $instanceofclass::get()->filter($idfield, $this->owner->ID);
-			foreach ($objectsWithImage as $objectWithImage) {
-					$sql = "UPDATE `$clazz` SET LastEdited=NOW() where ID=".$objectWithImage->ID;
-					DB::query($sql);
-				
+		
+
+		if ($dataobjectclasses) {
+			// deal with SiteTree first
+			foreach ($dataobjectclasses as $clazz => $idfield) {
+				$instanceofclass = Injector::inst()->create($clazz);
+				$objectsWithImage = $instanceofclass::get()->filter($idfield, $this->owner->ID);
+				foreach ($objectsWithImage as $objectWithImage) {
+						$sql = "UPDATE `$clazz` SET LastEdited=NOW() where ID=".$objectWithImage->ID;
+						DB::query($sql);
+					
+				}
 			}
 		}
 	}
