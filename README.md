@@ -1,4 +1,22 @@
 ##Partial Cache Busting After Image Editing
+[![Build Status](https://travis-ci.org/gordonbanderson/weboftalent-imageeditpartialcachebust.svg?branch=master)](https://travis-ci.org/gordonbanderson/weboftalent-imageeditpartialcachebust)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/badges/build.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/weboftalent-imageeditpartialcachebust/build-status/master)
+[![codecov.io](https://codecov.io/github/gordonbanderson/weboftalent-imageeditpartialcachebust/coverage.svg?branch=master)](https://codecov.io/github/gordonbanderson/weboftalent-imageeditpartialcachebust?branch=master)
+
+[![Latest Stable Version](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/version)](https://packagist.org/packages/weboftalent/imageeditpartialcachebust)
+[![Latest Unstable Version](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/v/unstable)](//packagist.org/packages/weboftalent/imageeditpartialcachebust)
+[![Total Downloads](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/downloads)](https://packagist.org/packages/weboftalent/imageeditpartialcachebust)
+[![License](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/license)](https://packagist.org/packages/weboftalent/imageeditpartialcachebust)
+[![Monthly Downloads](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/d/monthly)](https://packagist.org/packages/weboftalent/imageeditpartialcachebust)
+[![Daily Downloads](https://poser.pugx.org/weboftalent/imageeditpartialcachebust/d/daily)](https://packagist.org/packages/weboftalent/imageeditpartialcachebust)
+
+[![Dependency Status](https://www.versioneye.com/php/weboftalent:imageeditpartialcachebust/badge.svg)](https://www.versioneye.com/php/weboftalent:imageeditpartialcachebust)
+[![Reference Status](https://www.versioneye.com/php/weboftalent:imageeditpartialcachebust/reference_badge.svg?style=flat)](https://www.versioneye.com/php/weboftalent:imageeditpartialcachebust/references)
+
+![codecov.io](https://codecov.io/github/gordonbanderson/weboftalent-imageeditpartialcachebust/branch.svg?branch=master)
+
 This module enables the updating of the LastEdited value of DataObjects associated with Images being edited.  This simplifies partial caching of for example the rendering of a folder of pages which are each represented by an image.  If the cache key is based on the LastEdited value of the DataObjects in the folder,  then when an image is edited (e.g. refocused with the FocusPoint module) the change will not show, as the cache key knows nothing about the LastEdited field of the images of child pages.  
 
 The options to ensure image updates show in the above scenario when using partial caching are these:
@@ -61,4 +79,3 @@ $PageComments
 
 #Related Modules
 The cachkey helper module, https://github.com/gordonbanderson/weboftalent-cachekey-helper, enables all partial cache key values to be accessed in a single database query, vastly reducing the number of queries performed when checking for partial cache validity.
-
